@@ -17,8 +17,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const tableNotes = document.getElementById("tableNotes");
     const tableButton = document.getElementById("tableButton");
 
-    const rowHeight = 75;
-    const colWidth = 75;
+    const rowHeight = 65;
+    const colWidth = 65;
 
     let totalRows = 0;
     let totalCols = 0;
@@ -69,6 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 td.style.justifyContent = 'center';
                 td.style.alignItems = 'center';   
                 td.style.position = 'relative';
+                td.style.fontSize = 'smaller';
                 td.textContent = formatNumber((i + 1) * (j + 1), 6);
 
                 // Alternate background color
@@ -89,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 cornerValue.style.left = '0';
                 cornerValue.style.width = '100%';
                 cornerValue.style.textAlign = 'left';
-                cornerValue.style.fontSize = '10px';
+                cornerValue.style.fontSize = '8px';
                 cornerValue.style.margin = '3px';
                 cornerValue.style.background = 'transparent';
                 cornerValue.style.color = `#${colorFontValue}${colorFontValue}${colorFontValue}`;
@@ -173,7 +174,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
     function handleInput(e) {
         if (e.target.value < 0) e.target.value = '';
-        else if (e.target.value > 596_523) e.target.value = 596_523;
+        else if (e.target.value > 516_222) e.target.value = 516_222;
     }
 
     rowInput.addEventListener("input", handleInput);

@@ -46,11 +46,12 @@ footer {
     align-items: center;
     justify-content: center;
     margin-top: auto;
+    font-size: smaller;
 }
 
 h1 {
     font-size: 3em;
-    margin: 10px;
+    margin: 5px;
 }
 
 .tableContainer {
@@ -85,19 +86,23 @@ table {
     color: white
 }
 
-.cellCountContainer {
+.rowContainer {
     display: flex;
-    font-size: x-large;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 65px;
 }
 
 .cellCountContainer {
     display: flex;
     flex-direction: row;
-    margin: 10px;
-}
-
-.cellCountTitle {
-    margin-left: 10px;    
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    margin: 0 0 10px 20px;
+    font-size: large;
 }
 
 .cellCount {
@@ -106,7 +111,7 @@ table {
 
 .tableNotes {
     margin: 10px;
-    font-size: x-large;
+    font-size: large;
 }
 
 /* Input Containers */
@@ -122,7 +127,7 @@ table {
 
 .containerName {
     text-align: center;
-    font-size: x-large;
+    font-size: large;
 }
 
 input[type=number]::-webkit-inner-spin-button, 
@@ -134,11 +139,11 @@ input[type=number]::-webkit-outer-spin-button {
 .inputCount {
     border-radius: 10px;
     text-align: center;
-    width: 100px;
-    height: 40px;
+    width: 80px;
+    height: 30px;
     padding: 5px;
     font-family: Jura;
-    font-size: x-large;
+    font-size: large;
     background-color: rgb(240, 240, 240);
     box-shadow: 0px 0px 5px rgba(0,0,0,0.5);
 }
@@ -148,11 +153,11 @@ input[type=number]::-webkit-outer-spin-button {
 .tableButton {
     border-radius: 50px;
     padding: 10px;
-    margin: 10px;
+    margin: 10px 0 20px 0;
     background-color: rgb(225, 225, 225);
     color: rgb(0, 0, 0);
     font-family: Jura;
-    font-size: x-large;
+    font-size: large;
     border-color: black;
     box-shadow: 0px 2px 10px rgba(0,0,0,0.5);
 }

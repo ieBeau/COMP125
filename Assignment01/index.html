@@ -17,21 +17,23 @@
         
             <div class="inputContainer">
                 <div class="containerName">Columns</div>
-                <input class="inputCount" id="colCount" type="number" placeholder="596523" />
+                <input class="inputCount" id="colCount" type="number" placeholder="516222" />
             </div>
         </div>
 
-        <button class="tableButton" id="tableButton">Click here to draw a table</button>
+        <div class="rowContainer">
+            <div class="cellCountContainer">
+                <div class="cellCountTitle">Cell Count:</div><div class="cellCount" id="cellCount">0</div>
+            </div>
 
-        <div class="cellCountContainer">
-            <div class="cellCountTitle">Cell Count:</div><div class="cellCount" id="cellCount">0</div>
+            <button class="tableButton" id="tableButton">Click here to draw a table</button>
         </div>
 
         <div class="tableContainer" id="tableContainer">
             <div class="tableNotes" id="tableNotes">
                 Enter the number of rows and columns and click the button to draw a table.
                 <br>
-                <b>Note:</b> Try and enter any number from 0 to 596,523.    
+                <b>Note:</b> Try and enter any number from 0 to 516,222.    
             </div>
             <table class="inputTable" id="inputTable"></table>
         </div>
@@ -42,5 +44,5 @@
     </footer>
     
 </body>
-<script src="script.js"></script>
+<script src="scripts.js"></script>
 </html>
