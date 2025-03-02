@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>COMP123 | Assignment 3</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Assignment 3</h1>
+    </header>
+    <main>
+        <div class="section-form">
+
+            <div class="form-header">EMPLOYMENT / JOB <span class="highlight-text">APPLICATION</span></div>
+
+            <form id="employment-form">
+
+                <!-- PERSONAL INFORMATION SECTION -->
+                <div class="section-header">PERSONAL INFORMATION</div>
+                <section>
+                    <div class="form-group">
+                        <label for="applicantFirstName" class="section-title">FULL NAME:</label>
+
+                        <div class="input-container">
+                            <input type="text" id="applicantFirstName" name="applicantFirstName" required>
+                            <label for="applicantFirstName">First</label>
+                        </div>
+    
+                        <div class="input-container">
+                            <input type="text" id="applicantMiddleName" name="applicantMiddleName">
+                            <label for="applicantMiddleName">Middle</label>
+                        </div>
+    
+                        <div class="input-container">
+                            <input type="text" id="applicantLastName" name="applicantLastName" required>
+                            <label for="applicantLastName">Last</label>
+                        </div>
+    
+                        <label for="date" class="section-title alter-label">DATE:</label>
+
+                        <div class="input-container">
+                            <input type="date" id="date" name="date" required>
+                        </div>
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="applicantAddress" class="section-title">ADDRESS:</label>
+
+                        <div class="section-address">
+                            <div class="address-group">
+                                <div class="input-container">
+                                    <input type="text" id="applicantAddress" name="applicantAddress" required>
+                                    <label for="applicantAddress">Street Address</label>
+                                </div>
+    
+                                <div class="input-container">
+                                    <input type="text" id="applicantApt" name="applicantApt">
+                                    <label for="applicantApt">Apt/Suite</label>
+                                </div>
+                            </div>
+                            
+                            <div class="address-group">
+                                <div class="input-container">
+                                    <input type="text" id="applicantCity" name="applicantCity" required>
+                                    <label for="applicantCity">City</label>
+                                </div>
+    
+                                <div class="input-container">
+                                    <input type="text" id="applicantProvince" name="applicantProvince" required>
+                                    <label for="applicantProvince">Province</label>
+                                </div>
+    
+                                <div class="input-container">
+                                    <input type="text" id="applicantPostalCode" name="applicantPostalCode" required>
+                                    <label for="applicantPostalCode">Postal Code</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="applicantEmail" class="section-title">EMAIL:</label>
+
+                        <div class="input-container">
+                            <input type="email" id="applicantEmail" name="applicantEmail" required>
+                        </div>
+    
+                        <label for="applicantPhone" class="section-title alter-label">PHONE:</label>
+
+                        <div class="input-container">
+                            <input type="tel" id="applicantPhone" name="applicantPhone" maxlength="14" placeholder="(000) 000-0000" oninput="maskPhone()" required>
+                        </div>
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="applicantSin" class="section-title">SOCIAL INSURANCE NUMBER (SIN):</label>
+
+                        <div class="input-container-sin">
+                            <input type="text" id="applicantSin1" class="applicant-sin" maxlength="3" placeholder="000" oninput="moveToNext(this, 'applicantSin2')" pattern="\d*"> -
+                            <input type="text" id="applicantSin2" class="applicant-sin" maxlength="3" placeholder="000" oninput="moveToNext(this, 'applicantSin3')" pattern="\d*"> -
+                            <input type="text" id="applicantSin3" class="applicant-sin" maxlength="3" placeholder="000" oninput="combineSIN()" pattern="\d*">
+                            <input type="hidden" id="applicantSin" name="applicantSin">
+                        </div>
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="employmentAvailability" class="section-title">DATE AVAILABLE:</label>
+
+                        <div class="input-container">
+                            <input type="date" id="employmentAvailability" name="employmentAvailability" required>
+                        </div>
+    
+                        <label for="employmentPay" class="section-title alter-label">DESIRED PAY: $</label>
+
+                        <div class="input-container">
+                            <input type="number" id="employmentPay" name="employmentPay" placeholder="0.00" step="0.01">
+                        </div>
+                        
+                        <div class="radio-group">
+                            <input type="radio" id="payTypeHour" name="employmentPayType" value="hour" class="alter-label">
+                            <label for="payTypeHour">HOUR</label>
+                            
+                            <input type="radio" id="payTypeYear" name="employmentPayType" value="year" class="alter-label">
+                            <label for="payTypeYear">SALARY</label>
+                        </div>
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="employmentPosition" class="section-title">POSITION APPLIED FOR:</label>
+
+                        <div class="input-container">
+                            <input type="text" id="employmentPosition" name="employmentPosition" required>
+                        </div>
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="employmentType" class="section-title">EMPLOYMENT DESIRED:</label>
+                        
+                        <div class="radio-group">
+                            <input type="radio" id="jobTypeFullTime" name="employmentType" value="fullTime" class="alter-label" required>
+                            <label for="jobTypeFullTime">FULL-TIME</label>
+        
+                            <input type="radio" id="jobTypePartTime" name="employmentType" value="partTime" class="alter-label" required>
+                            <label for="jobTypePartTime">PART-TIME</label>
+        
+                            <input type="radio" id="jobTypeSeasonal" name="employmentType" value="seasonal" class="alter-label" required>
+                            <label for="jobTypeSeasonal">SEASONAL</label>
+                        </div>
+                    </div>
+                </section>
+    
+                <!-- EMPLOYMENT ELIGIBILITY SECTION -->
+                <div class="section-header">EMPLOYMENT ELIGIBILITY</div>
+    
+                <section>
+                    <div class="form-group">
+                        <label for="eligibleCitizen" class="section-title">ARE YOU A CANADIAN CITIZEN?</label>
+                        
+                        <div class="radio-group">
+                            <input type="radio" id="eligibleCitizenYes" name="eligibleCitizen" value=true class="alter-label" onclick="toggleCitizen(true)" required>
+                            <label for="eligibleCitizenYes">YES</label>
+        
+                            <input type="radio" id="eligibleCitizenNo" name="eligibleCitizen" value=false class="alter-label" onclick="toggleCitizen(false)" required>
+                            <label for="eligibleCitizenNo">NO</label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="eligibleNonCitizen" id="eligibleNonCitizenLabel" class="section-title alter-if">*IF NO, ARE YOU ALLOWED TO WORK IN CANADA?</label>
+                        
+                        <div class="radio-group">
+                            <input type="radio" id="eligibleNonCitizenYes" name="eligibleNonCitizen" value=true class="alter-label" disabled>
+                            <label for="eligibleNonCitizenYes" id="eligibleNonCitizenYesLabel" class="alter-if">YES</label>
+        
+                            <input type="radio" id="eligibleNonCitizenNo" name="eligibleNonCitizen" value=false class="alter-label" disabled>
+                            <label for="eligibleNonCitizenNo" id="eligibleNonCitizenNoLabel" class="alter-if">NO</label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="eligiblePastWork" class="section-title">HAVE YOU EVER WORKED FOR THIS EMPLOYER?</label>
+                        
+                        <div class="radio-group">
+                            <input type="radio" id="eligiblePastWorkYes" name="eligiblePastWork" value=true class="alter-label" onclick="toggleEligiblePastWork(true)" required>
+                            <label for="eligiblePastWorkYes">YES</label>
+        
+                            <input type="radio" id="eligiblePastWorkNo" name="eligiblePastWork" value=false class="alter-label" onclick="toggleEligiblePastWork(false)" required>
+                            <label for="eligiblePastWorkNo">NO</label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="eligiblePastWorkDates" id="eligiblePastWorkLabel" class="section-title alter-if">*IF YES, WRITE THE START AND END DATES:</label>
+                        
+                        <div class="input-container">
+                            <input type="date" id="eligiblePastWorkStartDate" name="eligiblePastWorkDates" disabled>
+                            <label for="eligiblePastWorkStartDate" id="eligiblePastWorkStartDateLabel" class="alter-if">Start</label>
+                        </div>
+                        
+                        <div class="input-container">
+                            <input type="date" id="eligiblePastWorkEndDate" name="eligiblePastWorkDates" disabled>
+                            <label for="eligiblePastWorkEndDate" id="eligiblePastWorkEndDateLabel" class="alter-if">End</label>
+                        </div>
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="eligibleCriminalCharges" id="eligibleCriminalCharges" class="section-title">HAVE YOU EVER BEEN CONVICTED OF A FELONY?</label>
+                        
+                        <div class="radio-group">
+                            <input type="radio" id="eligibleCriminalChargesYes" name="eligibleCriminalCharges" value=true class="alter-label" onclick="toggleCriminalExplanation(true)" required>
+                            <label for="eligibleCriminalChargesYes">YES</label>
+                            
+                            <input type="radio" id="eligibleCriminalChargesNo" name="eligibleCriminalCharges" value=false class="alter-label" onclick="toggleCriminalExplanation(false)" required>
+                            <label for="eligibleCriminalChargesNo">NO</label>
+                        </div>
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="eligibleCriminalChargesReason" id="eligibleCriminalChargesLabel" class="section-title alter-if">*IF YES, PLEASE EXPLAIN:</label>
+
+                        <textarea id="eligibleCriminalChargesReason" name="eligibleCriminalChargesReason" class="alter-label" disabled></textarea>
+                    </div>
+                </section>
+    
+                <!-- EDUCATION SECTION -->
+                <div class="section-header">EDUCATION</div>
+    
+                <section>
+                    <div class="form-group">
+                        <label for="educationLevel" class="section-title">EDUCATION LEVEL:</label>
+                        
+                        <select id="educationLevel" class="education-level" name="educationLevel" required>
+                            <option value="highSchool">High School</option>
+                            <option value="college">College</option>
+                        </select>
+                        
+                        <label for="educationSchoolName" class="section-title alter-label">SCHOOL:</label>
+                        
+                        <div class="input-container">
+                            <input type="text" id="educationSchoolName" name="educationSchoolName" required>
+                        </div>
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="educationCity" class="section-title">CITY/PROVINCE:</label>
+
+                        <div class="input-container">
+                            <input type="text" id="educationCity" name="educationCity" required>
+                            <label for="educationCity">City</label>
+                        </div>
+
+                        <div class="input-container">
+                            <input type="text" id="educationProvince" name="educationProvince" required>
+                            <label for="educationProvince">Province</label>
+                        </div>
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="educationFrom" class="section-title">FROM:</label>
+
+                        <div class="input-container">
+                            <input type="date" id="educationFrom" name="educationFrom" required>
+                        </div>
+    
+                        <label for="educationTo" class="section-title alter-label">TO:</label>
+
+                        <div class="input-container">
+                            <input type="date" id="educationTo" name="educationTo" required>
+                        </div>
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="educationGraduate" class="section-title">GRADUATE?</label>
+                        
+                        <div class="radio-group">
+                            <input type="radio" id="educationGraduateYes" name="educationGraduate" value=true class="alter-label" required>
+                            <label for="educationGraduateYes">YES</label>
+                            
+                            <input type="radio" id="educationGraduateNo" name="educationGraduate" value=false class="alter-label" required>
+                            <label for="educationGraduateNo">NO</label>
+                        </div>
+    
+                        <label for="educationCertificate" id="schoolCertificate" class="section-title alter-label diploma-label">DIPLOMA:</label>
+                        
+                        <div class="input-container">
+                            <input type="text" id="educationCertificate" name="educationCertificate" required>
+                        </div>
+                    </div>
+                </section>
+    
+                <div class="button-navigation">
+                    <button class="submit" id="form-button" type="submit">Submit</button>
+                    <button class="reset" id="form-button" type="reset">Reset</button>
+                </div>
+    
+            </form>
+        </div>
+    </main>
+    
+    <footer>
+        <p class="copyright">&copy;&nbsp;Copyright <span lang="en-ca">Winter</span> 20<span lang="en-ca">25</span>&nbsp; | &nbsp;Pierre Moreau – 301489780&nbsp; | &nbsp;COMP125 – Assignment 3</p>
+    </footer>
+</body>
+<script src="scripts.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
+</html>
