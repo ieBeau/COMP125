@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pierre Moreau Midterm</title>
+    <link rel="stylesheet" href="PierreMoreau_Midterm.css">
+</head>
+<body>
+    <header>
+        <a class="nav-main-link" href="./PierreMoreau_Midterm.html">
+            <h1 class="title">Peak Performance</h1>
+        </a>
+        <nav class="nav-contain-main">
+            <a class="nav-main-link" href="./contact.html">
+                <img src="./assets/mail.svg" height="35px" class="nav-item-icon contact-icon">
+                <h4 class="nav-item-title">Contact Us</h4>
+            </a>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <form id="evaluation-form" action="./PierreMoreau_Midterm.html">
+                <h2>Contact Us</h2>
+                
+                <div class="form-group">
+                    <label for="applicantEmail" class="section-title">EMAIL:</label>
+
+                    <div class="input-container">
+                        <input type="email" id="applicantEmail" name="applicantEmail" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="applicantFirstName" class="section-title">FULL NAME:</label>
+
+                    <div class="input-container">
+                        <input type="text" id="applicantFirstName" name="applicantFirstName" required>
+                        <label for="applicantFirstName">First</label>
+                    </div>
+
+                    <div class="input-container">
+                        <input type="text" id="applicantLastName" name="applicantLastName" required>
+                        <label for="applicantLastName">Last</label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="applicantMessage" class="section-title">MESSAGE:</label>
+                    <textarea type="email" id="applicantMessage" name="applicantMessage" placeholder="Please leave us a message..." required></textarea>
+                </div>
+
+                <div class="button-navigation">
+                    <button class="submit" type="submit">Submit</button>
+                    <button class="reset" type="reset">Reset</button>
+                </div>
+
+                <div class="contact">
+                    <p>Thank you! We pay attention to your feedback!</p>
+                </div>
+
+            </form>
+        </section>
+        
+    </main>
+    <footer>
+        <h5 class="copyright">&copy;&nbsp;Copyright <span lang="en-ca">Winter</span> 20<span lang="en-ca">25</span>&nbsp; | &nbsp;Pierre Moreau – 301489780&nbsp; | &nbsp;COMP125 – Midterm</h5>    
+    </footer>
+</body>
+<script src="PierreMoreau_Midterm.js"></script>
+</html>
