@@ -272,14 +272,14 @@ form button {
 
 @font-face {
     font-family: 'Locust';
-    src: url('./fonts/Locust.ttf') format('truetype');
+    src: url('fonts/Locust.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Jura';
-    src: url('./fonts/Jura.ttf') format('truetype');
+    src: url('fonts/Jura.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
