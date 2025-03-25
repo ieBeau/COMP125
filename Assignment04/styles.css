@@ -153,7 +153,7 @@ legend {
 
 @font-face {
     font-family: 'Jura';
-    src: url('../fonts/jura.ttf') format('truetype');
+    src: url('fonts/Jura.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
