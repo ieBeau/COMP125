@@ -1,0 +1,44 @@
+[
+    {
+        "id": "beatles-let-it-be",
+        "title": "Let It Be",
+        "artist": "The Beatles",
+        "year": 1970,
+        "image": "./assets/albums/Beatles-LetItBe.jpg"
+    },
+    {
+        "id": "beatles-abbey-road",
+        "title": "Abbey Road",
+        "artist": "The Beatles",
+        "year": 1969,
+        "image": "./assets/albums/Beatles-AbbeyRoad.jpg"
+    },
+    {
+        "id": "beatles-yellow-submarine",
+        "title": "The Yellow Submarine",
+        "artist": "The Beatles",
+        "year": 1969,
+        "image": "./assets/albums/Beatles-YellowSubmarine.jpg"
+    },
+    {
+        "id": "beatles-revolver",
+        "title": "Revolver",
+        "artist": "The Beatles",
+        "year": 1966,
+        "image": "./assets/albums/Beatles-Revolver.jpg"
+    },
+    {
+        "id": "beatles-help",
+        "title": "Help!",
+        "artist": "The Beatles",
+        "year": 1965,
+        "image": "./assets/albums/Beatles-Help.jpg"
+    },
+    {
+        "id": "beatles-hard-days-night",
+        "title": "A Hard Day's Night",
+        "artist": "The Beatles",
+        "year": 1964,
+        "image": "./assets/albums/Beatles-HardDaysNight.jpg"
+    }
+]

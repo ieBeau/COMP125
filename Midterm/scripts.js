@@ -49,7 +49,6 @@ changeMission.addEventListener("click", function() {
 });
 
 // Introduction Prompt
-// const header = document.querySelector("header");
 const header = document.getElementById("welcome");
 window.addEventListener("load", function () {
     const userName = prompt("Please enter your name:");
@@ -58,7 +57,5 @@ window.addEventListener("load", function () {
         welcomeMessage.style.fontSize = "36px";
         welcomeMessage.textContent = `Welcome, ${userName}! Stay fit and healthy!`;
         header.append(welcomeMessage);
-
-        // header.append(welcomeMessagePierre);
     }
 });
