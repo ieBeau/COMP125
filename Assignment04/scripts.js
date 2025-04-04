@@ -3,32 +3,51 @@
 const containerDraggable = document.getElementById('draggable-albums');
 const containerDropTargets = document.getElementById('drop-targets');
 
-function allowDrop(event) {
-    event.preventDefault();
-}
-
-function drag(event) {
-    event.dataTransfer.setData("text", event.target.closest('.draggable-image').id);
+function onDragStart(e) {
+    e.dataTransfer.effectAllowed = 'move';
+    e.dataTransfer.setDragImage(this.querySelector('img'), 40, 40);
+    e.dataTransfer.setData("text/html", this.id);
+    
+    this.style.opacity = '0.35';
     containerDraggable.style.border = '2px solid rgb(9, 56, 25)';
 }
 
-function drop(event) {
-    event.preventDefault();
-    const data = event.dataTransfer.getData("text");
-    const draggedContainer = document.getElementById(data);
-    if (event.target.classList.contains("drop-target")) {
-        event.target.appendChild(draggedContainer);
+function onDragEnd(e) {
+    this.style.opacity = '1';
+}
+
+function allowDrop(e) {
+    e.preventDefault();
+}
+
+function dropList(e) {
+    const data = e.dataTransfer.getData("text/html");
+    const draggedItem = document.getElementById(data);
+
+    const targetContainer = e.target.closest('.drop-target');
+    
+    if (targetContainer.children.length === 1) {
+        targetContainer.appendChild(draggedItem);
+    } else {
+        const parentOfDragged = draggedItem.parentNode.id;
+        const draggedContainer = document.getElementById(parentOfDragged);
+        
+        const targetItem = targetContainer.children[1];
+
+        draggedContainer.appendChild(targetItem);
+        targetContainer.appendChild(draggedItem);
     }
+
     containerDraggable.style.border = '2px solid #1DB954';
 }
 
-function dropList(event) {
-    event.preventDefault();
-    const data = event.dataTransfer.getData("text");
+function dropContainer(e) {
+    const data = e.dataTransfer.getData("text/html");
     const draggedContainer = document.getElementById(data);
-    if (event.target.classList.contains("drag-targets")) {
-        event.target.appendChild(draggedContainer);
-    }
+
+    const targetContainer = e.target.closest('.drag-targets');
+    if (targetContainer?.id) targetContainer.appendChild(draggedContainer);
+
     containerDraggable.style.border = '2px solid #1DB954';
 }
 
@@ -41,7 +60,8 @@ function initializeDraggableItems() {
             albumDiv.id = album.id;
             albumDiv.className = 'draggable-image';
             albumDiv.draggable = true;
-            albumDiv.ondragstart = drag;
+            albumDiv.ondragstart = onDragStart;
+            albumDiv.ondragend = onDragEnd;
 
             const img = document.createElement('img');
             img.src = album.image;
@@ -73,28 +93,33 @@ function initializeDraggableItems() {
         numberCircle.textContent = i;
         dropTarget.appendChild(numberCircle);
 
-        dropTarget.ondrop = drop;
+        dropTarget.ondrop = dropList;
         dropTarget.ondragover = allowDrop;
         containerDropTargets.appendChild(dropTarget);
 
         dropTarget.addEventListener('dragover', () => {
-            dropTarget.style.transform = 'scale(1.01)';
-            dropTarget.style.transition = 'transform 0.15s ease-in';
+            dropTarget.style.transform = 'scale(1.02)';
+            dropTarget.style.transition = 'transform 0.2s ease-in';
+            dropTarget.style.backgroundColor = '#179142';
+
         });
         
         dropTarget.addEventListener('dragleave', () => {
             dropTarget.style.transform = 'scale(1)';
-            dropTarget.style.transition = 'transform 0.15s ease-out';
+            dropTarget.style.transition = 'transform 0.2s ease-out';
+            dropTarget.style.backgroundColor = '#1DB954';
         });
 
         dropTarget.addEventListener('mouseenter', () => {
-            dropTarget.style.transform = 'scale(1.01)';
-            dropTarget.style.transition = 'transform 0.15s ease-in';
+            dropTarget.style.transform = 'scale(1.02)';
+            dropTarget.style.transition = 'transform 0.2s ease-in';
+            dropTarget.style.backgroundColor = '#179142';
         });
 
         dropTarget.addEventListener('mouseleave', () => {
             dropTarget.style.transform = 'scale(1)';
-            dropTarget.style.transition = 'transform 0.15s ease-out';
+            dropTarget.style.transition = 'transform 0.2s ease-out';
+            dropTarget.style.backgroundColor = '#1DB954';
         });
     }
 }

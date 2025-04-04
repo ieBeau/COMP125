@@ -1,30 +1,27 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>COMP123 | Assignment 4</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <header id="header">
-        <h1>Assignment 4</h1>
-    </header>
-    <main>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>COMP123 | Assignment 4</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <header id="header">
+            <h1>Assignment 4</h1>
+        </header>
+        <main>
+            <fieldset id="draggable-albums" class="drag-targets" ondrop="dropContainer(event)" ondragover="allowDrop(event)">
+                <legend>Drag and Drop</legend>
+            </fieldset>
 
-        <fieldset id="draggable-albums" class="drag-targets"  ondrop="dropList(event)" ondragover="allowDrop(event)">
-            <legend>Drag and Drop</legend>
-        </fieldset>
-
-        <section id="drag-and-drop">
-            <div id="drop-targets"></div>
-        </section>
-
-    </main>
-    
-    <footer>
-        <p class="copyright">&copy;&nbsp;Copyright <span lang="en-ca">Winter</span> 20<span lang="en-ca">25</span>&nbsp; | &nbsp;Pierre Moreau – 301489780&nbsp; | &nbsp;COMP125 – Assignment 4</p>
-    </footer>
-</body>
-<script src="scripts.js"></script>
+            <section id="drag-and-drop">
+                <div id="drop-targets"></div>
+            </section>
+        </main>
+        <footer>
+            <p class="copyright">&copy;&nbsp;Copyright <span lang="en-ca">Winter</span> 20<span lang="en-ca">25</span>&nbsp; | &nbsp;Pierre Moreau – 301489780&nbsp; | &nbsp;COMP125 – Assignment 4</p>
+        </footer>
+    </body>
+    <script src="scripts.js"></script>
 </html>

@@ -1,0 +1,142 @@
+<!-- Objective:
+Build a semantically structured form using HTML5, CSS, and JavaScript. Your solution
+must include:
+- Regex validation for Canadian postal code and phone number
+- JavaScript click event handling
+- A fake POST request simulation using https://jsonplaceholder.typicode.com/posts
+- Clear, accessible UI design -->
+
+<!-- Assignment Description:
+Create a “Canadian Tech Event Registration” form that collects the following details
+using semantic HTML5 elements:
+- Full Name (required, plain text input)
+- Email Address (required, HTML5 email input)
+- Phone Number (required, must match Canadian format: e.g., 416-555-1234 or (416)
+555-1234)
+- Postal Code (required, must match Canadian format: A1A 1A1)
+- Workshop Topic (use a semantic select element with at least 3 options)
+- Experience Level (radio buttons: Beginner, Intermediate, Advanced)
+- Additional Comments (optional, textarea)
+- Submit Button -->
+
+<!-- Requirements:
+1. Use Semantic HTML elements
+2. Validation (Regex):
+- Use JavaScript regex to validate:
+- Canadian phone numbers: Allow formats like (123) 456-7890, 123-456-7890, or
+1234567890
+- Canadian postal codes: Must match format like A1A 1A1
+- Display appropriate inline error messages under each invalid input.
+3. Click Event & Form Submission:
+- Use JavaScript to handle the submit button click.
+- Prevent form submission if validation fails.
+- On successful validation, use fetch() to simulate a POST request to:
+https://jsonplaceholder.typicode.com/posts
+- Display a success message without refreshing the page.
+- Log the response from the fake API in the browser console.
+4. Styling:
+- Use external CSS to style the form with good spacing, borders, colors, and responsive
+layout.
+- Apply hover effects and accessible focus states for inputs and buttons. -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>COMP123 | Assignment 5</title>
+        <link rel="stylesheet" href="PierreMoreau_Assignment5.css">
+    </head>
+    <body>
+        <header id="header">
+            <h1>Assignment 5</h1>
+        </header>
+        <main>
+            <form class="section-form" id="registrationForm">
+                <h3>Canadian <span class="title-section">Tech</span> Event Registration</h3>
+
+                <div class="form-group">
+                    <label for="fullName" class="section-title" id="fullNameLabel">Full Name:</label>
+
+                    <div class="input-container" onmouseover="hoverLabel('fullNameLabel', true)" onmouseout="hoverLabel('fullNameLabel', false)">
+                        <input type="text" id="fullName" name="fullName" oninput="nameInput()" required>
+                        <span class="error" id="fullNameError"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email" class="section-title" id="emailLabel">Email Address:</label>
+
+                    <div class="input-container" onmouseover="hoverLabel('emailLabel', true)" onmouseout="hoverLabel('emailLabel', false)">
+                        <input type="email" id="email" name="email" required>
+                        <span class="error" id="emailError"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="postalCode" class="section-title" id="postalCodeLabel">Postal Code:</label>
+
+                    <div class="input-container" onmouseover="hoverLabel('postalCodeLabel', true)" onmouseout="hoverLabel('postalCodeLabel', false)">
+                        <input type="text" id="postalCode" name="postalCode" maxlength="7" placeholder="ex. A5A 5A5" oninput="postalInput()" required>
+                        <span class="error" id="postalError"></span>
+                    </div>
+                    
+                    <label for="phoneNumber" class="section-title" id="phoneLabel">Phone Number:</label>
+
+                    <div class="input-container" onmouseover="hoverLabel('phoneLabel', true)" onmouseout="hoverLabel('phoneLabel', false)">
+                        <input type="tel" id="phoneNumber" name="phoneNumber" maxlength="14" placeholder="ex. (000) 000-0000" oninput="phoneInput()" required>
+                        <span class="error" id="phoneError"></span>
+                    </div>
+                </div>
+
+                <div class="form-stack">
+                    <div class="row-group">
+                        <label for="postalCode" class="section-title" id="experienceLabel">Experience Level:</label>
+                        <div class="radio-group" onmouseover="hoverLabel('experienceLabel', true)" onmouseout="hoverLabel('experienceLabel', false)">
+                            <label>
+                                <input type="radio" name="experienceLevel" value="beginner" required>
+                                Beginner
+                            </label>
+                            <label>
+                                <input type="radio" name="experienceLevel" value="intermediate">
+                                Intermediate
+                            </label>
+                            <label>
+                                <input type="radio" name="experienceLevel" value="advanced">
+                                Advanced
+                            </label>
+                        </div>
+                    </div>
+                    <span class="error" id="experienceError"></span>
+                </div>
+                
+                <div class="form-stack">
+                    <div class="form-group">
+                        <label for="workshop" class="section-title" id="workshopLabel">Workshop Topic:</label>
+                        <select id="workshop" class="dropdown" name="workshop" onmouseover="hoverLabel('workshopLabel', true)" onmouseout="hoverLabel('workshopLabel', false)" required>
+                            <option value="">Select a topic</option>
+                            <option value="webDevelopment">Web Development</option>
+                            <option value="dataScience">Data Science</option>
+                            <option value="cyberSecurity">Cyber Security</option>
+                        </select>
+                    </div>
+                    <span class="error" id="workshopError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="comments" class="section-title" id="commentsLabel">Additional Comments:</label>
+                    <textarea id="comments" name="comments" onmouseover="hoverLabel('commentsLabel', true)" onmouseout="hoverLabel('commentsLabel', false)"></textarea>
+                </div>
+
+                <div id="formValidation" class="formValidation"></div>
+
+                <button type="submit" id="submit" class="submit">Submit</button>
+            </form>
+        </main>
+        <footer>
+            <p class="copyright">&copy;&nbsp;Copyright <span lang="en-ca">Winter</span> 20<span lang="en-ca">25</span>&nbsp; | &nbsp;Pierre Moreau – 301489780&nbsp; | &nbsp;COMP125 – Assignment 5</p>
+        </footer>
+    </body>
+    <script src="PierreMoreau_Assignment5.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
+</html>

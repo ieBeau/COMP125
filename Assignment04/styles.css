@@ -51,6 +51,11 @@ footer {
     margin-top: auto;
 }
 
+h1 {
+    font-size: 50px;
+    margin: 20px;
+}
+
 h2 {
     color: #333;
 }
@@ -80,7 +85,7 @@ legend {
     display: inline-flex;
     border: rgb(200, 200, 200) 1px solid;
     background-color: rgb(250, 250, 250);
-    width: 100%;
+    width: 685px;
     height: 85px;
     margin: 5px;
     border-radius: 10px;
@@ -104,7 +109,6 @@ legend {
     padding-left: 10px;
 }
 
-
 #drop-targets {
     display: flex;
     flex-direction: column;
@@ -123,10 +127,6 @@ legend {
     transition: background-color 0.3s ease;
 }
 
-.drop-target:hover {
-    background-color: #179142;
-}
-
 .drop-target .number-circle {
     position: absolute;
     z-index: 1;
@@ -142,6 +142,19 @@ legend {
     padding: 10px;
     user-select: none;
     pointer-events: none;
+}
+
+.dragging {
+    border: 2px dashed rgb(203 213 225);
+    border-radius: 0.25rem;
+
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .drop-target.over {
