@@ -197,23 +197,10 @@ function handleWorkshopValidation(workshop) {
 }
 
 function handleFormSubmission(form, formData) {
-
-    confetti({
-        particleCount: 300,
-        spread: 90,
-        origin: { x: 1, y: 0.9 },
-    });
-
-    confetti({
-        particleCount: 300,
-        spread: 90,
-        origin: { x: 0, y: 0.9 },
-    });
-
     // If success message is found, return.
     const validation = document.getElementById('formValidation');
     if (validation) return;
-
+        
     fetch('https://jsonplaceholder.typicode.com/posts', {
         method: 'POST',
         headers: {
@@ -259,6 +246,19 @@ function handleFormSubmission(form, formData) {
         validation.appendChild(closeButton);
 
         main.appendChild(validation);
+        
+        confetti({
+            particleCount: 600,
+            spread: 120,
+            origin: { x: 1, y: 0.9 },
+        });
+
+        confetti({
+            particleCount: 600,
+            spread: 120,
+            origin: { x: 0, y: 0.9 },
+        });
     })
     .catch(error => console.error('Error:', error));
+    
 }
