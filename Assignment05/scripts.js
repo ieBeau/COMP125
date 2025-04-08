@@ -60,6 +60,47 @@ document.getElementById('submit').addEventListener('click', function (event) {
 
     // Handle Name Validation
     const name = document.getElementById('fullName');
+    handleNameValidation(name);
+
+    // Handle Email Validation
+    const email = document.getElementById('email');
+    handleEmailValidation(email);
+
+    // Handle Postal Code Validation
+    const postalCode = document.getElementById('postalCode');
+    handlePostalCodeValidation(postalCode);
+
+    // Handle Phone Number Validation
+    const phoneNumber = document.getElementById('phoneNumber');
+    handlePhoneValidation(phoneNumber);
+
+    // Handle Experience Validation
+    const experience = Array.from(document.getElementsByName('experienceLevel'));
+    handleExperienceValidation(experience);
+
+    // Handle Workshop Validation
+    const workshop = document.getElementById('workshop');
+    handleWorkshopValidation(workshop);
+
+    // Handle Form Submission
+    const formData = {
+        fullName: name.value,
+        email: email.value,
+        phoneNumber: phoneNumber.value,
+        postalCode: postalCode.value,
+        experienceLevel: experience.find(item => item.checked).value,
+        workshopTopic: workshop.value
+    };
+
+    const form = document.getElementById('registrationForm');
+    if (form.checkValidity()) {
+        event.preventDefault();
+
+        handleFormSubmission(form, formData);
+    }
+});
+
+function handleNameValidation(name) {
     const nameError = document.getElementById('fullNameError');
 
     const nameRegex = /^[a-zA-Z\s]+$/;
@@ -72,9 +113,9 @@ document.getElementById('submit').addEventListener('click', function (event) {
     } else {
         nameError.textContent = '';
     }
+}
 
-    // Handle Email Validation
-    const email = document.getElementById('email');
+function handleEmailValidation(email) {
     const emailError = document.getElementById('emailError');
 
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -96,9 +137,9 @@ document.getElementById('submit').addEventListener('click', function (event) {
     } else {
         emailError.textContent = '';
     }
+}
 
-    // Handle Postal Code Validation
-    const postalCode = document.getElementById('postalCode');
+function handlePostalCodeValidation(postalCode) {
     const postalError = document.getElementById('postalError');
     
     const postalRegex = /^[A-Za-z]\d[A-Za-z] ?\d[A-Za-z]\d$/;
@@ -111,9 +152,9 @@ document.getElementById('submit').addEventListener('click', function (event) {
     } else {
         postalError.textContent = '';
     }
+}
 
-    // Handle Phone Number Validation
-    const phoneNumber = document.getElementById('phoneNumber');
+function handlePhoneValidation(phoneNumber) {
     const phoneDigits = phoneNumber.value.replace(/\D/g, '');
 
     const phoneError = document.getElementById('phoneError');
@@ -126,10 +167,9 @@ document.getElementById('submit').addEventListener('click', function (event) {
     } else {
         phoneError.textContent = '';
     }
+}
 
-    // Handle Experience Validation
-    const experience = Array.from(document.getElementsByName('experienceLevel'));
-    
+function handleExperienceValidation(experience) {
     const experienceError = document.getElementById('experienceError');
     if (experience.every(item => item.checked === false)) {
         experience[0].focus();
@@ -140,9 +180,9 @@ document.getElementById('submit').addEventListener('click', function (event) {
     } else {
         experienceError.textContent = '';
     }
+}
 
-    // Handle Workshop Validation
-    const workshop = document.getElementById('workshop');
+function handleWorkshopValidation(workshop) {
     const workshopError = document.getElementById('workshopError');
 
     if (workshop.value === '') {
@@ -154,49 +194,71 @@ document.getElementById('submit').addEventListener('click', function (event) {
     } else {
         workshopError.textContent = '';
     }
+}
 
-    const form = document.getElementById('registrationForm');
+function handleFormSubmission(form, formData) {
 
-    if (form.checkValidity()) {
-        event.preventDefault();
+    confetti({
+        particleCount: 300,
+        spread: 90,
+        origin: { x: 1, y: 0.9 },
+    });
+
+    confetti({
+        particleCount: 300,
+        spread: 90,
+        origin: { x: 0, y: 0.9 },
+    });
+
+    // If success message is found, return.
+    const validation = document.getElementById('formValidation');
+    if (validation) return;
+
+    fetch('https://jsonplaceholder.typicode.com/posts', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data)
         
-        const validation = document.getElementById('formValidation');
-        validation.style.display = 'flex';
+        const body = document.body;
+        const background = document.createElement('div');
+        background.id = 'formBackground';
+        background.className = 'formBackground';
+        background.onclick = () => {
+            form.reset();
+            document.getElementById('formValidation').remove();
+            background.remove();
+        };
+        body.append(background);
+
+        const main = document.querySelector('main');
+        const validation = document.createElement('div');
+        validation.id = 'formValidation';
+        validation.className = 'formValidation';
         validation.innerHTML = '<h3>Form Submitted Successfully!</h3>';
 
-        confetti({
-            particleCount: 300,
-            spread: 90,
-            origin: { x: 1, y: 0.9 },
-        });
-
-        confetti({
-            particleCount: 300,
-            spread: 90,
-            origin: { x: 0, y: 0.9 },
-        });
-
-        // Handle Form Submission
-        const formData = {
-            fullName: name.value,
-            email: email.value,
-            phoneNumber: phoneNumber.value,
-            postalCode: postalCode.value,
-            experienceLevel: experience.find(item => item.checked).value,
-            workshopTopic: workshop.value
+        const closeButton = document.createElement('span');
+        closeButton.textContent = 'x';
+        closeButton.style.position = 'absolute';
+        closeButton.style.top = '10px';
+        closeButton.style.right = '15px';
+        closeButton.style.cursor = 'pointer';
+        closeButton.style.color = '#101010';
+        closeButton.style.fontSize = '20px';
+        closeButton.style.fontWeight = 'bold';
+        closeButton.onclick = () => {
+            form.reset();
+            validation.remove();
+            background.remove();
         };
+        validation.appendChild(closeButton);
 
-        fetch('https://jsonplaceholder.typicode.com/posts', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(formData)
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log(data)
-        })
-        .catch(error => console.error('Error:', error));
-    }
-});
+        main.appendChild(validation);
+    })
+    .catch(error => console.error('Error:', error));
+}
