@@ -54,6 +54,23 @@ function postalInput() {
     document.getElementById('postalCode').value = digits.toUpperCase();
 }
 
+// Handle Experience Dropdown Menu Styling
+let dropdown = false;
+const workshop = document.getElementById('workshop');
+workshop.addEventListener('focus', () => {
+    dropdown = false;
+    workshop.style.borderRadius = '10px 10px 0 0';
+});
+workshop.addEventListener('blur', () => {
+    dropdown = true;
+    workshop.style.borderRadius = '10px 10px 10px 10px';
+});
+function dropdownMenu() {
+    dropdown = !dropdown;
+    if (dropdown) workshop.style.borderRadius = '10px 10px 0 0';
+    else workshop.style.borderRadius = '10px 10px 10px 10px';
+}
+
 // Handle Submit Button Click
 document.getElementById('submit').addEventListener('click', function (event) {
     event.preventDefault();
@@ -88,7 +105,7 @@ document.getElementById('submit').addEventListener('click', function (event) {
         email: email.value,
         phoneNumber: phoneNumber.value,
         postalCode: postalCode.value,
-        experienceLevel: experience.find(item => item.checked).value,
+        experienceLevel: experience.find(item => item.checked)?.value,
         workshopTopic: workshop.value
     };
 
@@ -216,11 +233,6 @@ function handleFormSubmission(form, formData) {
         const background = document.createElement('div');
         background.id = 'formBackground';
         background.className = 'formBackground';
-        background.onclick = () => {
-            form.reset();
-            document.getElementById('formValidation').remove();
-            background.remove();
-        };
         body.append(background);
 
         const main = document.querySelector('main');
@@ -229,21 +241,18 @@ function handleFormSubmission(form, formData) {
         validation.className = 'formValidation';
         validation.innerHTML = '<h3>Form Submitted Successfully!</h3>';
 
-        const closeButton = document.createElement('span');
-        closeButton.textContent = 'x';
-        closeButton.style.position = 'absolute';
-        closeButton.style.top = '10px';
-        closeButton.style.right = '15px';
-        closeButton.style.cursor = 'pointer';
-        closeButton.style.color = '#101010';
-        closeButton.style.fontSize = '20px';
-        closeButton.style.fontWeight = 'bold';
-        closeButton.onclick = () => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.id = 'submit';
+        button.className = 'submit';
+        button.textContent = 'Close';
+        button.style.marginTop = '20px';
+        button.onclick = () => {
             form.reset();
             validation.remove();
             background.remove();
         };
-        validation.appendChild(closeButton);
+        validation.appendChild(button);
 
         main.appendChild(validation);
         

@@ -1,44 +1,3 @@
-<!-- Objective:
-Build a semantically structured form using HTML5, CSS, and JavaScript. Your solution
-must include:
-- Regex validation for Canadian postal code and phone number
-- JavaScript click event handling
-- A fake POST request simulation using https://jsonplaceholder.typicode.com/posts
-- Clear, accessible UI design -->
-
-<!-- Assignment Description:
-Create a “Canadian Tech Event Registration” form that collects the following details
-using semantic HTML5 elements:
-- Full Name (required, plain text input)
-- Email Address (required, HTML5 email input)
-- Phone Number (required, must match Canadian format: e.g., 416-555-1234 or (416)
-555-1234)
-- Postal Code (required, must match Canadian format: A1A 1A1)
-- Workshop Topic (use a semantic select element with at least 3 options)
-- Experience Level (radio buttons: Beginner, Intermediate, Advanced)
-- Additional Comments (optional, textarea)
-- Submit Button -->
-
-<!-- Requirements:
-1. Use Semantic HTML elements
-2. Validation (Regex):
-- Use JavaScript regex to validate:
-- Canadian phone numbers: Allow formats like (123) 456-7890, 123-456-7890, or
-1234567890
-- Canadian postal codes: Must match format like A1A 1A1
-- Display appropriate inline error messages under each invalid input.
-3. Click Event & Form Submission:
-- Use JavaScript to handle the submit button click.
-- Prevent form submission if validation fails.
-- On successful validation, use fetch() to simulate a POST request to:
-https://jsonplaceholder.typicode.com/posts
-- Display a success message without refreshing the page.
-- Log the response from the fake API in the browser console.
-4. Styling:
-- Use external CSS to style the form with good spacing, borders, colors, and responsive
-layout.
-- Apply hover effects and accessible focus states for inputs and buttons. -->
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -52,7 +11,6 @@ layout.
             <h1>Assignment 5</h1>
         </header>
         <main>
-            <!-- <div style="background-color: rgb(0, 0, 0, 0.5); width: 100%; height: 100%; position: absolute; left: 0; top: 0;"></div> -->
             <form class="section-form" id="registrationForm">
                 <h3>Canadian <span class="title-section">Tech</span> Event Registration</h3>
 
@@ -65,7 +23,7 @@ layout.
                     </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-email">
                     <label for="email" class="section-title" id="emailLabel">Email Address:</label>
 
                     <div class="input-container" onmouseover="hoverLabel('emailLabel', true)" onmouseout="hoverLabel('emailLabel', false)">
@@ -91,7 +49,7 @@ layout.
                 </div>
 
                 <div class="form-stack">
-                    <div class="row-group">
+                    <div class="form-radio">
                         <label for="postalCode" class="section-title" id="experienceLabel">Experience Level:</label>
                         <div class="radio-group" onmouseover="hoverLabel('experienceLabel', true)" onmouseout="hoverLabel('experienceLabel', false)">
                             <label>
@@ -112,9 +70,9 @@ layout.
                 </div>
                 
                 <div class="form-stack">
-                    <div class="form-group">
+                    <div class="form-dropdown">
                         <label for="workshop" class="section-title" id="workshopLabel">Workshop Topic:</label>
-                        <select id="workshop" class="dropdown" name="workshop" onmouseover="hoverLabel('workshopLabel', true)" onmouseout="hoverLabel('workshopLabel', false)" required>
+                        <select id="workshop" class="dropdown" name="workshop" onmouseover="hoverLabel('workshopLabel', true)" onmouseout="hoverLabel('workshopLabel', false)" onclick="dropdownMenu()" required>
                             <option value="">Select a topic</option>
                             <option value="webDevelopment">Web Development</option>
                             <option value="dataScience">Data Science</option>
@@ -124,7 +82,7 @@ layout.
                     <span class="error" id="workshopError"></span>
                 </div>
 
-                <div class="form-group">
+                <div class="form-comments">
                     <label for="comments" class="section-title" id="commentsLabel">Additional Comments:</label>
                     <textarea id="comments" name="comments" onmouseover="hoverLabel('commentsLabel', true)" onmouseout="hoverLabel('commentsLabel', false)"></textarea>
                 </div>
