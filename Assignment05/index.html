@@ -17,8 +17,8 @@
                 <div class="form-group">
                     <label for="fullName" class="section-title" id="fullNameLabel">Full Name:</label>
 
-                    <div class="input-container" onmouseover="hoverLabel('fullNameLabel', true)" onmouseout="hoverLabel('fullNameLabel', false)">
-                        <input type="text" id="fullName" name="fullName" oninput="nameInput()" required>
+                    <div class="input-container" id="fullName-container">
+                        <input type="text" id="fullName" name="fullName" required>
                         <span class="error" id="fullNameError"></span>
                     </div>
                 </div>
@@ -26,7 +26,7 @@
                 <div class="form-email">
                     <label for="email" class="section-title" id="emailLabel">Email Address:</label>
 
-                    <div class="input-container" onmouseover="hoverLabel('emailLabel', true)" onmouseout="hoverLabel('emailLabel', false)">
+                    <div class="input-container" id="email-container">
                         <input type="email" id="email" name="email" required>
                         <span class="error" id="emailError"></span>
                     </div>
@@ -35,23 +35,23 @@
                 <div class="form-group">
                     <label for="postalCode" class="section-title" id="postalCodeLabel">Postal Code:</label>
 
-                    <div class="input-container" onmouseover="hoverLabel('postalCodeLabel', true)" onmouseout="hoverLabel('postalCodeLabel', false)">
-                        <input type="text" id="postalCode" name="postalCode" maxlength="7" placeholder="ex. A5A 5A5" oninput="postalInput()" required>
+                    <div class="input-container" id="postalCode-container">
+                        <input type="text" id="postalCode" name="postalCode" maxlength="7" placeholder="ex. A5A 5A5" required>
                         <span class="error" id="postalError"></span>
                     </div>
                     
                     <label for="phoneNumber" class="section-title" id="phoneLabel">Phone Number:</label>
 
-                    <div class="input-container" onmouseover="hoverLabel('phoneLabel', true)" onmouseout="hoverLabel('phoneLabel', false)">
-                        <input type="tel" id="phoneNumber" name="phoneNumber" maxlength="14" placeholder="ex. (000) 000-0000" oninput="phoneInput()" required>
+                    <div class="input-container" id="phoneNumber-container">
+                        <input type="tel" id="phoneNumber" name="phoneNumber" maxlength="14" placeholder="ex. (000) 000-0000" required>
                         <span class="error" id="phoneError"></span>
                     </div>
                 </div>
 
                 <div class="form-stack">
                     <div class="form-radio">
-                        <label for="postalCode" class="section-title" id="experienceLabel">Experience Level:</label>
-                        <div class="radio-group" onmouseover="hoverLabel('experienceLabel', true)" onmouseout="hoverLabel('experienceLabel', false)">
+                        <label for="experienceLevel" class="section-title" id="experienceLabel">Experience Level:</label>
+                        <div class="radio-group" id="experience-container">
                             <label>
                                 <input type="radio" name="experienceLevel" value="beginner" required>
                                 Beginner
@@ -72,11 +72,11 @@
                 <div class="form-stack">
                     <div class="form-dropdown">
                         <label for="workshop" class="section-title" id="workshopLabel">Workshop Topic:</label>
-                        <select id="workshop" class="dropdown" name="workshop" onmouseover="hoverLabel('workshopLabel', true)" onmouseout="hoverLabel('workshopLabel', false)" onclick="dropdownMenu()" required>
+                        <select id="workshop" class="dropdown" name="workshop" required>
                             <option value="">Select a topic</option>
-                            <option value="webDevelopment">Web Development</option>
-                            <option value="dataScience">Data Science</option>
-                            <option value="cyberSecurity">Cyber Security</option>
+                            <option value="Web Development">Web Development</option>
+                            <option value="Data Science">Data Science</option>
+                            <option value="Cyber Security">Cyber Security</option>
                         </select>
                     </div>
                     <span class="error" id="workshopError"></span>
@@ -84,7 +84,7 @@
 
                 <div class="form-comments">
                     <label for="comments" class="section-title" id="commentsLabel">Additional Comments:</label>
-                    <textarea id="comments" name="comments" onmouseover="hoverLabel('commentsLabel', true)" onmouseout="hoverLabel('commentsLabel', false)"></textarea>
+                    <textarea id="comments" name="comments"></textarea>
                 </div>
 
                 <button type="submit" id="submit" class="submit">Submit</button>
